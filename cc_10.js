@@ -99,3 +99,22 @@ inventoryWithOrders.listOrders();
 
 console.log(prod1.getDetails());
 // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 3"
+
+// Task 5 - Implemented Product Restocking
+class InventoryWithRestocking extends InventoryWithOrders {
+    restockProduct(productId, quantity) {
+        const product = this.products.find(prod => prod.id === productId);
+        if (product) {
+            product.stock += quantity; // Increasing stock
+        } else {
+            console.log("Product not found in inventory.");
+        }
+    }
+}
+
+// Test cases for Task 5
+const inventoryWithRestocking = new InventoryWithRestocking();
+inventoryWithRestocking.addProduct(prod1);
+inventoryWithRestocking.restockProduct(101, 5);
+console.log(prod1.getDetails());
+// Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 8"
